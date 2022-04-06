@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { updateIndex } from '../features/sushiIndex'
 
-const MoreButtons = () => {
+const MoreButton = () => {
   const dispatch = useDispatch()
   const sushiIndex = useSelector((state) => state.sushiIndex.value)
   const sushis = useSelector((state) => state.sushis.value)
@@ -19,4 +19,4 @@ const MoreButtons = () => {
   return <button onClick={handleMoreSushiBtnClick}>More sushi!</button>
 }
 
-export default MoreButtons
+export default MoreButton
