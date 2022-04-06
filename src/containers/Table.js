@@ -1,6 +1,6 @@
 import React from 'react'
-
-const Table = () => {
+import PropTypes from 'prop-types'
+const Table = ({ wallet, eatenSushis }) => {
   const renderPlates = (array) => {
     return array.map((x, index) => {
       return (
@@ -15,9 +15,7 @@ const Table = () => {
 
   return (
     <>
-      <h1 className='remaining'>
-        You have: ${/* Give me how much money I have left */} remaining!
-      </h1>
+      <h1 className='remaining'>You have: ${wallet} remaining!</h1>
       <div className='table'>
         <div className='stack'>
           {
@@ -26,7 +24,7 @@ const Table = () => {
                and renders an empty plate
                for every element in the array
             */
-            renderPlates([])
+            renderPlates(eatenSushis)
           }
         </div>
       </div>
@@ -35,3 +33,8 @@ const Table = () => {
 }
 
 export default Table
+
+Table.propTypes = {
+  wallet: PropTypes.number,
+  eatenSushis: PropTypes.array,
+}

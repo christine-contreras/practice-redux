@@ -7,6 +7,8 @@ const API = 'http://localhost:3000/sushis'
 function App() {
   const [sushis, setSushis] = useState([])
   const [sushiIndex, setSushiIndex] = useState(0)
+  const [wallet, setWallet] = useState(100)
+  const [eatenSushis, setEatenSushis] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,13 +28,22 @@ function App() {
 
     setSushiIndex(startOver ? 0 : newIndex)
   }
+
+  const handleEatenSushi = (selectedSushi) => {
+    setWallet((prevWallet) => prevWallet - selectedSushi.price)
+
+    setEatenSushis((prevSushis) => [...prevSushis, selectedSushi])
+  }
+
   return (
     <div className='App'>
       <SushiContainer
         sushis={sushis.slice(sushiIndex, sushiIndex + 4)}
         handleMoreSushiBtnClick={handleMoreSushiBtnClick}
+        handleEatenSushi={handleEatenSushi}
+        wallet={wallet}
       />
-      <Table />
+      <Table wallet={wallet} eatenSushis={eatenSushis} />
     </div>
   )
 }
