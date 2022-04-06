@@ -6,11 +6,17 @@ import reportWebVitals from './reportWebVitals'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import walletReducer from './features/wallet'
+import eatenSushisReducer from './features/eatenSushis'
+import SushisReducer from './features/sushis'
+import SushiIndexReducer from './features/sushiIndex'
 //set up store first parameter is an object of reducers
 //reduce is a function that takes info about the current states and an action you want to perform.
 const store = configureStore({
   reducer: {
     wallet: walletReducer,
+    sushis: SushisReducer,
+    eatenSushis: eatenSushisReducer,
+    sushiIndex: SushiIndexReducer,
   },
 })
 

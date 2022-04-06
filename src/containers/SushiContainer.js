@@ -1,33 +1,22 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import MoreButton from '../components/MoreButtons'
 import Sushi from '../components/Sushi'
-const SushiContainer = ({
-  sushis,
-  handleMoreSushiBtnClick,
-  handleEatenSushi,
-}) => {
+import { useSelector } from 'react-redux'
+
+const SushiContainer = () => {
+  const sushis = useSelector((state) => state.sushis.value)
+  const sushiIndex = useSelector((state) => state.sushiIndex.value)
+
   return (
     <>
       <div className='belt'>
-        {sushis.map((sushi) => (
-          <Sushi
-            sushi={sushi}
-            key={`sushi-item-${sushi.id}`}
-            handleEatenSushi={handleEatenSushi}
-          />
+        {sushis.slice(sushiIndex, sushiIndex + 4).map((sushi) => (
+          <Sushi sushi={sushi} key={`sushi-item-${sushi.id}`} />
         ))}
-        <MoreButton handleMoreSushiBtnClick={handleMoreSushiBtnClick} />
+        <MoreButton />
       </div>
     </>
   )
 }
 
 export default SushiContainer
-
-SushiContainer.propTypes = {
-  sushis: PropTypes.array,
-  handleMoreSushiBtnClick: PropTypes.func,
-  handleEatenSushi: PropTypes.func,
-  // wallet: PropTypes.number,
-}

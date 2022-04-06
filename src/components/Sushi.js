@@ -2,16 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { updateWallet } from '../features/wallet'
+import { addSushiToEatenSushis } from '../features/eatenSushis'
 
-const Sushi = ({ sushi, handleEatenSushi }) => {
-  const wallet = useSelector((state) => state.wallet.value)
-
+const Sushi = ({ sushi }) => {
+  const dispatch = useDispatch()
   const [sushiEaten, setSushiEaten] = useState(false)
+  const wallet = useSelector((state) => state.wallet.value)
 
   const handleSushiClick = () => {
     if (!sushiEaten && wallet >= sushi.price) {
       setSushiEaten((prevEaten) => !prevEaten)
-      handleEatenSushi(sushi)
+
+      dispatch(updateWallet(wallet - sushi.price))
+      dispatch(addSushiToEatenSushis(sushi))
+      // handleEatenSushi(sushi)
     } else {
       alert('not enough money in your wallet')
     }
@@ -34,6 +40,6 @@ export default Sushi
 
 Sushi.propTypes = {
   sushi: PropTypes.object,
-  handleEatenSushi: PropTypes.func,
+  // handleEatenSushi: PropTypes.func,
   // wallet: PropTypes.number,
 }

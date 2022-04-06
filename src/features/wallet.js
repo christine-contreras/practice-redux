@@ -11,4 +11,5 @@ export const walletSlice = createSlice({
   },
 })
 
+export const { updateWallet } = walletSlice.actions
 export default walletSlice.reducer

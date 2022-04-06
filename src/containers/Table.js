@@ -1,9 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 
-const Table = ({ eatenSushis }) => {
+const Table = () => {
   const wallet = useSelector((state) => state.wallet.value)
+  const eatenSushis = useSelector((state) => state.eatenSushis.value)
 
   const renderPlates = (array) => {
     return array.map((x, index) => {
@@ -37,8 +37,3 @@ const Table = ({ eatenSushis }) => {
 }
 
 export default Table
-
-Table.propTypes = {
-  // wallet: PropTypes.number,
-  eatenSushis: PropTypes.array,
-}
