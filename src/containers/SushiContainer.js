@@ -6,7 +6,6 @@ const SushiContainer = ({
   sushis,
   handleMoreSushiBtnClick,
   handleEatenSushi,
-  wallet,
 }) => {
   return (
     <>
@@ -16,7 +15,6 @@ const SushiContainer = ({
             sushi={sushi}
             key={`sushi-item-${sushi.id}`}
             handleEatenSushi={handleEatenSushi}
-            wallet={wallet}
           />
         ))}
         <MoreButton handleMoreSushiBtnClick={handleMoreSushiBtnClick} />
@@ -31,5 +29,5 @@ SushiContainer.propTypes = {
   sushis: PropTypes.array,
   handleMoreSushiBtnClick: PropTypes.func,
   handleEatenSushi: PropTypes.func,
-  wallet: PropTypes.number,
+  // wallet: PropTypes.number,
 }

@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
-const Sushi = ({ sushi, handleEatenSushi, wallet }) => {
+const Sushi = ({ sushi, handleEatenSushi }) => {
+  const wallet = useSelector((state) => state.wallet.value)
+
   const [sushiEaten, setSushiEaten] = useState(false)
 
   const handleSushiClick = () => {
@@ -32,5 +35,5 @@ export default Sushi
 Sushi.propTypes = {
   sushi: PropTypes.object,
   handleEatenSushi: PropTypes.func,
-  wallet: PropTypes.number,
+  // wallet: PropTypes.number,
 }

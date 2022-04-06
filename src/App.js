@@ -10,6 +10,9 @@ function App() {
   const [wallet, setWallet] = useState(100)
   const [eatenSushis, setEatenSushis] = useState([])
 
+  //remove after setup
+  console.log(wallet)
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(API)
@@ -41,9 +44,8 @@ function App() {
         sushis={sushis.slice(sushiIndex, sushiIndex + 4)}
         handleMoreSushiBtnClick={handleMoreSushiBtnClick}
         handleEatenSushi={handleEatenSushi}
-        wallet={wallet}
       />
-      <Table wallet={wallet} eatenSushis={eatenSushis} />
+      <Table eatenSushis={eatenSushis} />
     </div>
   )
 }
